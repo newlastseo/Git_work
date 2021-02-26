@@ -18,6 +18,14 @@ function App() {
   //   글제목변경(newArray);
   // }
 
+  function 반복된UI() {
+    var array = [];
+    for (var i = 0; i < 3; i++) {
+      array.push(<div>일반적인반복문</div>);
+    }
+    return array;
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -44,6 +52,9 @@ function App() {
         <p>2월 17일 발행</p>
         <hr />
       </div>
+
+      {반복된UI()}
+
       <div className="list">
         <h3
           onClick={() => {
@@ -55,14 +66,23 @@ function App() {
         <p>2월 17일 발행</p>
         <hr />
       </div>
-      <button
+      {글제목.map(function (글) {
+        return (
+          <div className="list">
+            <h3>{글}</h3>
+            <p>2월 17일 발행</p>
+            <hr />
+          </div>
+        );
+      })}
+      {/* <button
         onClick={() => {
           modal변경(!modal);
         }}
       >
         열고닫기버튼
       </button>
-      {modal === true ? <Modal /> : null}
+      {modal === true ? <Modal /> : null} */}
     </div>
   );
 }
